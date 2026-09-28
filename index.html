@@ -245,7 +245,7 @@ button{font:inherit}
   margin-top:24px;min-height:25px;color:var(--gold2);font-weight:700;
 }
 
-/* PAGE 3–6 — memory pages */
+/* –6 — memory pages */
 .memory-page{
   background:
     radial-gradient(circle at 12% 18%,rgba(233,170,69,.13),transparent 28%),
@@ -470,22 +470,33 @@ button{font:inherit}
     </div>
   </section>
 
-  <!-- ================= PAGE 3 ================= -->
-  <section class="page memory-page" data-page="3">
-    <div class="topbar"><button class="icon-btn" onclick="goHome()" aria-label="Home"><span class="home-symbol"></span></button><span class="counter">3/7</span><button class="icon-btn" onclick="closeAll()" aria-label="Tutup">×</button></div>
-    <div class="memory-layout">
-      <div class="memory-card">
-        <div class="memory-photo"><img src="assets/memories/memory-1.svg" alt="Foto kenangan 1"></div>
-        <div class="memory-copy">
-          <div class="eyebrow">Kenangan 01</div>
-          <h2>Awal dari cerita kita ♡</h2>
-          <p>Tempatkan foto pertama kalian di sini. Ceritakan sedikit tentang momen ini—tanggal, tempat, atau hal kecil yang sampai sekarang masih kamu ingat.</p>
-          <div class="quote">“Ternyata satu momen kecil bisa menjadi awal dari banyak cerita.”</div>
+<!-- ================= PAGE 3 ================= -->
+  <section class="page memory-page" data-page="3" style="background: url('assets/page-3.jpg') center/cover no-repeat;">
+    <div class="topbar">
+      <button class="icon-btn" onclick="goHome()" aria-label="Home"><span class="home-symbol"></span></button>
+      <span class="counter">3/7</span>
+      <button class="icon-btn" onclick="closeAll()" aria-label="Tutup">×</button>
+    </div>
+    
+    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 90px 20px 40px; text-align: center; overflow-y: auto;">
+      
+      <!-- Area Kartu / Foto & Ucapan -->
+      <div style="width: min(450px, 92vw); background: rgba(8, 23, 47, 0.75); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
+        
+        <!-- Foto Polaroid -->
+        <div style="background: #fff; padding: 12px 12px 35px 12px; border-radius: 4px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); transform: rotate(-2deg); margin-bottom: 20px;">
+          <img src="assets/foto-pasangan.jpg" alt="Foto Kenangan" style="width: 100%; height: 240px; object-fit: cover; display: block; border-radius: 2px;">
+          <p style="color: #333; font-family: 'Courier New', monospace; font-size: 14px; margin: 12px 0 0 0; font-weight: bold;">Happy Birthday, My Superman ♡</p>
         </div>
+
+        <!-- Teks Pesan Romantis -->
+        <p style="color: #fff3df; font-size: 15px; line-height: 1.7; margin: 0; text-align: left;">
+          Hari ini bukan cuma tentang bertambahnya umur kamu, tapi tentang bersyukur karena di umur yang baru ini, aku masih bisa menjadi salah satu orang yang melihat kamu tumbuh.
+        </p>
+
       </div>
     </div>
   </section>
-
   <!-- ================= PAGE 4 ================= -->
   <section class="page memory-page" data-page="4">
     <div class="topbar"><button class="icon-btn" onclick="goHome()" aria-label="Home"><span class="home-symbol"></span></button><span class="counter">4/7</span><button class="icon-btn" onclick="closeAll()" aria-label="Tutup">×</button></div>
