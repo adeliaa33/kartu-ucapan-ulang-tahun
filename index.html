@@ -66,7 +66,8 @@ button{font:inherit}
   pointer-events:none;
 }
 
-/* PAGE 1 — menggunakan artwork asli, tombol bawaan dijadikan clickable melalui invisible hotspot[cite: 6]. */
+/* PAGE 1 — menggunakan artwork asli, tetapi tombol HTML tambahan dihilangkan.
+   Tombol bawaan pada gambar dijadikan clickable melalui invisible hotspot. */
 .p1-hotspot{
   position:absolute;
   left:19%;
@@ -439,7 +440,8 @@ button{font:inherit}
       <img src="assets/page-1-kamar.jpg" alt="Ilustrasi kamar malam dengan kucing dan hadiah">
     </div>
 
-    <!-- Tombol transparan yang menindih tombol asli di gambar[cite: 6] -->
+    <!-- Tombol ini TRANSPARAN: yang terlihat tetap tombol dari gambar asli.
+         Tidak ada tombol Buka Hadiah kedua. -->
     <button class="p1-hotspot" aria-label="Buka hadiah" onclick="openGift()"></button>
 
     <!-- Kucing tambahan kecil yang bergerak -->
@@ -657,7 +659,11 @@ function fireConfetti(){
   setTimeout(()=>layer.innerHTML="",5500);
 }
 
-/* Musik Web Audio API[cite: 6] */
+/* ---------------------------------------------------------
+   Musik: melodi ulang tahun ORIGINAL menggunakan Web Audio.
+   Tidak memerlukan file MP3 eksternal. Browser biasanya
+   mengharuskan interaksi pengguna sebelum audio dimainkan.
+--------------------------------------------------------- */
 let audioCtx = null;
 let musicTimer = null;
 let musicPlaying = false;
