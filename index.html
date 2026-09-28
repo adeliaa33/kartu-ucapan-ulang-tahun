@@ -448,23 +448,18 @@ button{font:inherit}
     <div class="p1-cat" aria-hidden="true">🐱</div>
   </section>
 
-  <!-- ================= PAGE 2 ================= -->
+ <!-- ================= PAGE 2 ================= -->
   <section class="page p2" data-page="2">
-    <div class="stars"></div>
-    <div class="topbar"><span></span><span class="counter">2/7</span><span></span></div>
-    <div class="p2-content">
-      <p class="script">A little birthday surprise...</p>
-      <p class="p2-sub">Sebelum lanjut, coba klik kuenya ♡</p>
-
-      <div class="cake" onclick="cakeClick()" role="button" tabindex="0" aria-label="Kue ulang tahun">
-        <div class="cake-base"></div>
-        <div class="cake-cream"></div>
-        <div class="drip d1"></div><div class="drip d2"></div><div class="drip d3"></div><div class="drip d4"></div>
-        <div class="candle" style="left:37%"><span class="flame"></span></div>
-        <div class="candle" style="left:50%"><span class="flame"></span></div>
-        <div class="candle" style="left:63%"><span class="flame"></span></div>
-      </div>
-      <div class="cake-message" id="cakeMessage">Klik kuenya untuk menyalakan lilin ✨</div>
+    <div class="page-bg">
+      <img src="assets/page-2-kue.jpg" alt="Kue ulang tahun spesial dengan konfeti">
+    </div>
+    <div class="topbar"><button class="icon-btn" onclick="goHome()" aria-label="Home"><span class="home-symbol"></span></button><span class="counter">2/7</span><button class="icon-btn" onclick="closeAll()" aria-label="Tutup">×</button></div>
+    
+    <!-- Area klik di atas gambar kue untuk memunculkan efek konfeti saat diklik -->
+    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 60px; pointer-events: none;">
+      <button onclick="fireConfetti()" style="pointer-events: auto; background: rgba(233,170,69,0.85); color: #09172d; border: none; padding: 12px 28px; border-radius: 30px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.4); font-family: inherit;">
+        Rayakan Kejutan ✨
+      </button>
     </div>
   </section>
 
