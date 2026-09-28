@@ -448,17 +448,24 @@ button{font:inherit}
     <div class="p1-cat" aria-hidden="true">🐱</div>
   </section>
 
- <!-- ================= PAGE 2 ================= -->
+<!-- ================= PAGE 2 ================= -->
   <section class="page p2" data-page="2">
     <div class="page-bg">
       <img src="assets/page-2-kue.jpg" alt="Kue ulang tahun spesial dengan konfeti">
     </div>
     <div class="topbar"><button class="icon-btn" onclick="goHome()" aria-label="Home"><span class="home-symbol"></span></button><span class="counter">2/7</span><button class="icon-btn" onclick="closeAll()" aria-label="Tutup">×</button></div>
     
-    <!-- Area klik di atas gambar kue untuk memunculkan efek konfeti saat diklik -->
-    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 60px; pointer-events: none;">
-      <button onclick="fireConfetti()" style="pointer-events: auto; background: rgba(233,170,69,0.85); color: #09172d; border: none; padding: 12px 28px; border-radius: 30px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.4); font-family: inherit;">
-        Rayakan Kejutan ✨
+    <!-- Teks tambahan di atas gambar -->
+    <div style="position: absolute; top: 12%; left: 0; right: 0; text-align: center; padding: 0 20px; pointer-events: none;">
+      <p style="font-family: Georgia, serif; font-style: italic; color: #fff3df; font-size: clamp(18px, 4vw, 24px); text-shadow: 0 2px 8px rgba(0,0,0,0.8); margin: 0;">
+        Klik kuenya ya sayangkuu kak azii ada kejutan spesialll ♡
+      </p>
+    </div>
+
+    <!-- Tombol dengan teks baru: "Klik Sayang" -->
+    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 50px; pointer-events: none;">
+      <button onclick="fireConfetti()" style="pointer-events: auto; background: rgba(233,170,69,0.9); color: #09172d; border: none; padding: 12px 30px; border-radius: 30px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.4); font-family: inherit; font-size: 16px;">
+        Klik Sayang ✨
       </button>
     </div>
   </section>
