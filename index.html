@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#09172d">
+<title>Untuk Kamu ♡</title>
+<style>
+:root{
+  --navy:#09172d;
+  --navy2:#102442;
+  --navy3:#172d4e;
+  --cream:#fff3df;
+  --cream2:#f2dfc5;
+  --gold:#e9aa45;
+  --gold2:#f3c56f;
+  --muted:#c9bdad;
+  --shadow:rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{
+  font-family:"Trebuchet MS","Segoe UI",sans-serif;
+  background:var(--navy);
+  color:var(--cream);
+}
+button{font:inherit}
+.app{
+  position:relative;
+  width:100vw;
+  height:100dvh;
+  min-height:560px;
+  overflow:hidden;
+  background:var(--navy);
+}
+.page{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  visibility:hidden;
+  transform:scale(1.035);
+  transition:opacity .55s ease,transform .7s cubic-bezier(.2,.8,.2,1),visibility .55s;
+  overflow:hidden;
+}
+.page.active{
+  opacity:1;
+  visibility:visible;
+  transform:scale(1);
+}
+.page-bg{
+  position:absolute;
+  inset:0;
+}
+.page-bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+.page-bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(3,10,24,.34),rgba(3,10,24,.08) 42%,rgba(3,10,24,.28));
+  pointer-events:none;
+}
+
+/* PAGE 1 — menggunakan artwork asli, tombol bawaan dijadikan clickable melalui invisible hotspot[cite: 6]. */
+.p1-hotspot{
+  position:absolute;
+  left:19%;
+  top:55.5%;
+  width:42%;
+  height:8.5%;
+  z-index:6;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  border-radius:999px;
+}
+.p1-hotspot:focus-visible{
+  outline:3px solid var(--gold2);
+  outline-offset:4px;
+}
+.p1-cat{
+  position:absolute;
+  z-index:7;
+  left:26%;
+  bottom:9%;
+  font-size:clamp(44px,7vw,86px);
+  filter:drop-shadow(0 10px 12px rgba(0,0,0,.35));
+  animation:catBob 2.8s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes catBob{
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-12px) rotate(2deg)}
+}
+
+/* Common top controls */
+.topbar{
+  position:absolute;
+  z-index:20;
+  left:0;right:0;top:0;
+  height:84px;
+  padding:18px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  pointer-events:none;
+}
+.topbar>*{pointer-events:auto}
+.icon-btn{
+  width:48px;height:48px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.13);
+  background:rgba(5,15,32,.36);
+  color:#fff;
+  backdrop-filter:blur(7px);
+  display:grid;place-items:center;
+  cursor:pointer;
+  transition:.22s;
+}
+.icon-btn:hover{transform:scale(1.07);background:rgba(5,15,32,.64)}
+.home-symbol{
+  width:20px;height:18px;background:#fff;border-radius:2px;position:relative;margin-top:6px;
+}
+.home-symbol:before{
+  content:"";position:absolute;width:16px;height:16px;background:#fff;left:2px;top:-8px;transform:rotate(45deg);border-radius:2px;
+}
+.home-symbol:after{
+  content:"";position:absolute;width:5px;height:10px;background:#14223b;left:8px;bottom:0;border-radius:2px;
+}
+.counter{
+  font-size:26px;font-weight:800;text-shadow:0 3px 12px rgba(0,0,0,.55);
+}
+.x{font-size:30px;font-weight:300}
+
+/* Music control */
+.music{
+  position:absolute;
+  z-index:25;
+  right:24px;
+  bottom:22px;
+  width:48px;height:48px;
+  border-radius:50%;
+  color:var(--cream);
+  background:rgba(5,15,32,.48);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(7px);
+  cursor:pointer;
+  box-shadow:0 7px 25px rgba(0,0,0,.22);
+}
+.music.playing{box-shadow:0 0 0 5px rgba(233,170,69,.12),0 7px 25px rgba(0,0,0,.25)}
+.music-icon{font-size:19px}
+
+/* Side nav */
+.nav{
+  position:absolute;z-index:22;top:50%;left:0;right:0;
+  display:flex;justify-content:space-between;
+  transform:translateY(-50%);
+  padding:0 13px;
+  pointer-events:none;
+}
+.nav button{
+  pointer-events:auto;
+  width:48px;height:48px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;background:rgba(7,18,36,.40);
+  backdrop-filter:blur(7px);
+  cursor:pointer;font-size:28px;
+  transition:.22s;
+}
+.nav button:hover{transform:scale(1.08);background:rgba(7,18,36,.72)}
+
+/* PAGE 2 — cake */
+.p2{
+  background:
+    radial-gradient(circle at 50% 38%,rgba(239,183,94,.12),transparent 26%),
+    linear-gradient(180deg,#08172f 0%,#102746 55%,#08172f 100%);
+}
+.stars,.stars:before,.stars:after{
+  position:absolute;inset:0;content:"";
+  background-image:
+    radial-gradient(circle,#fff 0 1px,transparent 2px),
+    radial-gradient(circle,#e9aa45 0 1px,transparent 2px);
+  background-size:130px 130px,210px 210px;
+  background-position:15px 25px,80px 60px;
+  opacity:.38;
+}
+.p2-content{
+  position:absolute;z-index:5;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:100px 20px 70px;
+}
+.script{
+  font-family:Georgia,serif;font-style:italic;
+  font-size:clamp(30px,5vw,60px);
+  margin:0 0 8px;color:var(--cream);
+}
+.p2-sub{color:var(--muted);font-size:17px;margin:0 0 30px}
+.cake{
+  position:relative;
+  width:min(360px,70vw);
+  height:260px;
+  cursor:pointer;
+  filter:drop-shadow(0 25px 28px rgba(0,0,0,.38));
+  transition:transform .25s;
+}
+.cake:hover{transform:translateY(-5px)}
+.cake-base{
+  position:absolute;left:7%;bottom:15px;width:86%;height:125px;
+  background:linear-gradient(180deg,#d98c72,#a95058);
+  border-radius:25px 25px 18px 18px;
+  border:3px solid rgba(255,243,223,.38);
+}
+.cake-cream{
+  position:absolute;left:7%;bottom:112px;width:86%;height:55px;
+  background:#fff1df;border-radius:25px 25px 18px 18px;
+}
+.drip{
+  position:absolute;top:15px;width:25px;height:48px;background:#fff1df;border-radius:0 0 20px 20px;
+}
+.d1{left:18%}.d2{left:43%}.d3{left:67%}.d4{left:79%}
+.candle{
+  position:absolute;bottom:165px;width:15px;height:70px;
+  border-radius:6px;background:repeating-linear-gradient(135deg,#e9aa45 0 7px,#fff1df 7px 14px);
+}
+.candle:nth-child(1){left:37%}.candle:nth-child(2){left:50%}.candle:nth-child(3){left:63%}
+.flame{
+  position:absolute;left:50%;top:-24px;width:16px;height:24px;
+  transform:translateX(-50%) rotate(45deg);
+  border-radius:80% 20% 80% 20%;
+  background:#ffc75b;
+  box-shadow:0 0 20px #ffc75b;
+  animation:flame 1s ease-in-out infinite alternate;
+}
+@keyframes flame{
+  from{transform:translateX(-50%) rotate(42deg) scale(.9)}
+  to{transform:translateX(-50%) rotate(48deg) scale(1.1)}
+}
+.cake-message{
+  margin-top:24px;min-height:25px;color:var(--gold2);font-weight:700;
+}
+
+/* PAGE 3–6 — memory pages */
+.memory-page{
+  background:
+    radial-gradient(circle at 12% 18%,rgba(233,170,69,.13),transparent 28%),
+    radial-gradient(circle at 90% 85%,rgba(117,154,205,.15),transparent 30%),
+    linear-gradient(135deg,#08172f,#152d4e 55%,#0b1b34);
+}
+.memory-layout{
+  position:absolute;inset:0;
+  display:grid;place-items:center;
+  padding:100px 24px 70px;
+}
+.memory-card{
+  width:min(1000px,92vw);
+  max-height:82vh;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:30px;
+  padding:28px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:28px;
+  background:rgba(6,17,34,.62);
+  backdrop-filter:blur(12px);
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+.memory-photo{
+  min-height:430px;
+  overflow:hidden;
+  border-radius:20px;
+  border:1px solid rgba(233,170,69,.42);
+  background:#102442;
+}
+.memory-photo img{
+  width:100%;height:100%;display:block;object-fit:cover;
+}
+.memory-copy{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:10px 8px;
+}
+.eyebrow{
+  color:var(--gold2);font-size:13px;letter-spacing:3px;text-transform:uppercase;font-weight:800;
+}
+.memory-copy h2{
+  font-family:Georgia,serif;font-weight:400;
+  font-size:clamp(32px,4.5vw,55px);
+  margin:12px 0;
+}
+.memory-copy p{
+  color:#ded5ca;line-height:1.8;font-size:16px;
+}
+.quote{
+  color:var(--cream);font-family:Georgia,serif;font-style:italic;
+  font-size:20px;line-height:1.6;
+  border-left:3px solid var(--gold);
+  padding-left:16px;margin-top:15px;
+}
+
+/* Page 7 */
+.p7{
+  background:
+    radial-gradient(circle at 50% 35%,rgba(233,170,69,.17),transparent 30%),
+    linear-gradient(160deg,#07152b,#142d50 60%,#07152b);
+}
+.final{
+  position:absolute;inset:0;z-index:4;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:100px 20px 70px;
+}
+.final-cat{font-size:clamp(65px,10vw,120px);animation:catBob 2.6s ease-in-out infinite}
+.final h1{
+  font-family:Georgia,serif;font-size:clamp(42px,7vw,84px);margin:8px 0;color:var(--cream);
+}
+.final p{max-width:620px;color:#dfd5c8;line-height:1.8;font-size:18px}
+.final-heart{font-size:36px;color:var(--gold2);animation:pulse 1.5s infinite}
+@keyframes pulse{50%{transform:scale(1.18)}}
+
+/* Gift modal */
+.modal{
+  position:absolute;z-index:50;inset:0;
+  display:grid;place-items:center;padding:24px;
+  background:rgba(3,9,20,.76);
+  backdrop-filter:blur(11px);
+  opacity:0;visibility:hidden;transition:.35s;
+}
+.modal.active{opacity:1;visibility:visible}
+.gift-card{
+  width:min(560px,94vw);
+  padding:38px 30px 30px;
+  position:relative;
+  text-align:center;
+  border:2px solid rgba(233,170,69,.7);
+  border-radius:30px;
+  background:linear-gradient(145deg,#122b4b,#07182f);
+  box-shadow:0 35px 100px rgba(0,0,0,.58);
+  transform:translateY(20px) scale(.95);
+  transition:.4s;
+}
+.modal.active .gift-card{transform:none}
+.modal-close{
+  position:absolute;right:14px;top:13px;width:40px;height:40px;border-radius:50%;
+  border:0;background:rgba(255,255,255,.08);color:#fff;font-size:25px;cursor:pointer;
+}
+.gift-box{
+  width:150px;height:130px;margin:5px auto 20px;position:relative;cursor:pointer;
+  filter:drop-shadow(0 15px 15px rgba(0,0,0,.3));
+}
+.box-body{
+  position:absolute;left:5px;right:5px;bottom:0;height:92px;
+  background:#1e4a7d;border-radius:6px 6px 12px 12px;
+  border:2px solid #d38d31;
+}
+.box-lid{
+  position:absolute;left:0;right:0;top:20px;height:36px;
+  background:#25558d;border:2px solid #d38d31;border-radius:6px;z-index:2;
+}
+.ribbon-v{
+  position:absolute;top:20px;bottom:0;left:64px;width:22px;background:#e9aa45;z-index:3;
+}
+.ribbon-h{
+  position:absolute;left:0;right:0;top:31px;height:13px;background:#e9aa45;z-index:4;
+}
+.bow{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:5;font-size:36px;color:#f1b94f;
+}
+.gift-card h2{font-family:Georgia,serif;font-size:34px;margin:5px 0 10px}
+.gift-card p{color:#dfd5c8;line-height:1.75;margin:0 auto 22px;max-width:430px}
+.open-memory{
+  border:2px solid var(--gold2);background:rgba(9,29,51,.72);color:var(--cream);
+  border-radius:999px;padding:13px 25px;cursor:pointer;font-weight:800;
+}
+
+/* Confetti */
+#confetti{
+  position:absolute;inset:0;z-index:70;pointer-events:none;overflow:hidden;
+}
+.confetti-piece{
+  position:absolute;top:-20px;width:9px;height:18px;
+  animation:fall var(--dur) linear forwards;
+  transform:rotate(var(--rot));
+}
+@keyframes fall{
+  to{transform:translate3d(var(--x),110vh,0) rotate(calc(var(--rot) + 720deg))}
+}
+
+/* Mobile */
+@media(max-width:760px){
+  .topbar{height:70px;padding:12px 13px}
+  .icon-btn{width:42px;height:42px}
+  .counter{font-size:22px}
+  .nav{padding:0 8px}
+  .nav button{width:42px;height:42px;font-size:25px}
+  .music{right:14px;bottom:14px;width:44px;height:44px}
+
+  .p1-hotspot{
+    left:18%;
+    top:55%;
+    width:45%;
+    height:10%;
+  }
+
+  .p1-cat{left:18%;bottom:7%;font-size:55px}
+
+  .memory-card{
+    grid-template-columns:1fr;
+    gap:18px;
+    padding:17px;
+    max-height:86vh;
+    overflow:auto;
+  }
+  .memory-photo{min-height:270px;height:43vh}
+  .memory-copy{padding:0 5px 10px}
+  .memory-copy p{font-size:14px}
+  .quote{font-size:17px}
+  .final p{font-size:15px}
+}
+
+@media(max-height:700px) and (min-width:761px){
+  .memory-photo{min-height:310px}
+  .memory-card{max-height:78vh}
+}
+
+/* Hide scrollbar visually but preserve scroll */
+.memory-card::-webkit-scrollbar{width:5px}
+.memory-card::-webkit-scrollbar-thumb{background:rgba(233,170,69,.4);border-radius:9px}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- ================= PAGE 1 ================= -->
+  <section class="page p1 active" data-page="1">
+    <div class="page-bg">
+      <img src="assets/page-1-kamar.jpg" alt="Ilustrasi kamar malam dengan kucing dan hadiah">
+    </div>
+
+    <!-- Tombol transparan yang menindih tombol asli di gambar[cite: 6] -->
+    <button class="p1-hotspot" aria-label="Buka hadiah" onclick="openGift()"></button>
+
+    <!-- Kucing tambahan kecil yang bergerak -->
+    <div class="p1-cat" aria-hidden="true">🐱</div>
+  </section>
+
+  <!-- ================= PAGE 2 ================= -->
+  <section class="page p2" data-page="2">
+    <div class="stars"></div>
+    <div class="topbar"><span></span><span class="counter">2/7</span><span></span></div>
+    <div class="p2-content">
+      <p class="script">A little birthday surprise...</p>
+      <p class="p2-sub">Sebelum lanjut, coba klik kuenya ♡</p>
+
+      <div class="cake" onclick="cakeClick()" role="button" tabindex="0" aria-label="Kue ulang tahun">
+        <div class="cake-base"></div>
+        <div class="cake-cream"></div>
+        <div class="drip d1"></div><div class="drip d2"></div><div class="drip d3"></div><div class="drip d4"></div>
+        <div class="candle" style="left:37%"><span class="flame"></span></div>
+        <div class="candle" style="left:50%"><span class="flame"></span></div>
+        <div class="candle" style="left:63%"><span class="flame"></span></div>
+      </div>
+      <div class="cake-message" id="cakeMessage">Klik kuenya untuk menyalakan lilin ✨</div>
+    </div>
+  </section>
+
+  <!-- ================= PAGE 3 ================= -->
+  <section class="page memory-page" data-page="3">
+    <div class="topbar"><button class="icon-btn" onclick="goHome()" aria-label="Home"><span class="home-symbol"></span></button><span class="counter">3/7</span><button class="icon-btn" onclick="closeAll()" aria-label="Tutup">×</button></div>
+    <div class="memory-layout">
+      <div class="memory-card">
+        <div class="memory-photo"><img src="assets/memories/memory-1.svg" alt="Foto kenangan 1"></div>
+        <div class="memory-copy">
+          <div class="eyebrow">Kenangan 01</div>
+          <h2>Awal dari cerita kita ♡</h2>
+          <p>Tempatkan foto pertama kalian di sini. Ceritakan sedikit tentang momen ini—tanggal, tempat, atau hal kecil yang sampai sekarang masih kamu ingat.</p>
+          <div class="quote">“Ternyata satu momen kecil bisa menjadi awal dari banyak cerita.”</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PAGE 4 ================= -->
+  <section class="page memory-page" data-page="4">
+    <div class="topbar"><button class="icon-btn" onclick="goHome()" aria-label="Home"><span class="home-symbol"></span></button><span class="counter">4/7</span><button class="icon-btn" onclick="closeAll()" aria-label="Tutup">×</button></div>
+    <div class="memory-layout">
+      <div class="memory-card" style="grid-template-columns:.85fr 1.15fr">
+        <div class="memory-copy">
+          <div class="eyebrow">Kenangan 02</div>
+          <h2>Momen yang bikin senyum</h2>
+          <p>Gunakan halaman ini untuk foto atau cerita yang paling sering membuatmu tersenyum. Desain dibuat sedikit berbeda agar setiap halaman terasa seperti lembar album.</p>
+          <div class="quote">“Kalau bisa mengulang satu hari, mungkin aku akan memilih hari ini.”</div>
+        </div>
+        <div class="memory-photo"><img src="assets/memories/memory-2.svg" alt="Foto kenangan 2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PAGE 5 ================= -->
+  <section class="page memory-page" data-page="5">
+    <div class="topbar"><button class="icon-btn" onclick="goHome()" aria-label="Home"><span class="home-symbol"></span></button><span class="counter">5/7</span><button class="icon-btn" onclick="closeAll()" aria-label="Tutup">×</button></div>
+    <div class="memory-layout">
+      <div class="memory-card" style="display:block;max-width:850px">
+        <div class="memory-photo" style="height:46vh;min-height:250px"><img src="assets/memories/memory-3.svg" alt="Foto kenangan 3"></div>
+        <div class="memory-copy" style="padding:18px 5px 0">
+          <div class="eyebrow">Kenangan 03</div>
+          <h2>Hal-hal kecil yang berarti</h2>
+          <p>Masukkan foto yang mungkin sederhana, tetapi punya cerita besar untuk kalian. Tambahkan caption pendek agar halaman ini terasa personal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PAGE 6 ================= -->
+  <section class="page memory-page" data-page="6">
+    <div class="topbar"><button class="icon-btn" onclick="goHome()" aria-label="Home"><span class="home-symbol"></span></button><span class="counter">6/7</span><button class="icon-btn" onclick="closeAll()" aria-label="Tutup">×</button></div>
+    <div class="memory-layout">
+      <div class="memory-card" style="grid-template-columns:1fr 1fr">
+        <div class="memory-photo"><img src="assets/memories/memory-4.svg" alt="Foto kenangan 4"></div>
+        <div class="memory-copy">
+          <div class="eyebrow">Untuk kamu</div>
+          <h2>Yang ingin aku sampaikan</h2>
+          <p>Ini bisa menjadi halaman surat singkat. Kamu bebas mengganti seluruh teks dengan pesan ulang tahunmu sendiri.</p>
+          <div class="quote">“Semoga kita selalu punya banyak alasan untuk membuat kenangan baru.”</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PAGE 7 ================= -->
+  <section class="page p7" data-page="7">
+    <div class="final">
+      <div class="final-cat">🐱</div>
+      <h1>Happy Birthday ♡</h1>
+      <p>
+        Terima kasih sudah menjadi bagian dari cerita ini.
+        Semoga hari ini penuh hal-hal yang kamu suka,
+        dan semoga masih banyak cerita manis yang bisa kita buat.
+      </p>
+      <div class="final-heart">♥</div>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <div class="topbar" id="globalTop">
+    <button class="icon-btn" onclick="goHome()" aria-label="Kembali ke halaman pertama"><span class="home-symbol"></span></button>
+    <span class="counter" id="globalCounter">1/7</span>
+    <button class="icon-btn x" onclick="closeAll()" aria-label="Tutup">×</button>
+  </div>
+
+  <div class="nav">
+    <button onclick="changePage(-1)" aria-label="Halaman sebelumnya">‹</button>
+    <button onclick="changePage(1)" aria-label="Halaman berikutnya">›</button>
+  </div>
+
+  <!-- Music -->
+  <button class="music" id="musicBtn" onclick="toggleMusic()" aria-label="Putar atau jeda musik">
+    <span class="music-icon" id="musicIcon">♫</span>
+  </button>
+
+  <!-- Gift Modal -->
+  <div class="modal" id="giftModal" onclick="modalOutside(event)">
+    <div class="gift-card">
+      <button class="modal-close" onclick="closeGift()" aria-label="Tutup">×</button>
+      <div class="gift-box" onclick="giftOpenAnimation()" role="button" tabindex="0" aria-label="Kotak hadiah">
+        <div class="bow">⌁</div>
+        <div class="box-lid"></div>
+        <div class="box-body"></div>
+        <div class="ribbon-v"></div>
+        <div class="ribbon-h"></div>
+      </div>
+      <h2>Untuk kamu ♡</h2>
+      <p id="giftText">Ada sedikit kejutan di dalamnya. Klik kotak hadiahnya dulu ✨</p>
+      <button class="open-memory" onclick="goToPage(2);closeGift();fireConfetti()">
+        Buka kejutan →
+      </button>
+    </div>
+  </div>
+
+  <div id="confetti"></div>
+</div>
+
+<script>
+let currentPage = 1;
+const totalPages = 7;
+
+const pages = [...document.querySelectorAll(".page")];
+const counter = document.getElementById("globalCounter");
+const modal = document.getElementById("giftModal");
+const giftText = document.getElementById("giftText");
+const musicBtn = document.getElementById("musicBtn");
+const musicIcon = document.getElementById("musicIcon");
+
+function renderPage(){
+  pages.forEach(p => p.classList.toggle("active", Number(p.dataset.page) === currentPage));
+  counter.textContent = `${currentPage}/${totalPages}`;
+}
+function goToPage(n){
+  currentPage = Math.max(1, Math.min(totalPages,n));
+  renderPage();
+}
+function changePage(dir){
+  currentPage += dir;
+  if(currentPage > totalPages) currentPage = 1;
+  if(currentPage < 1) currentPage = totalPages;
+  renderPage();
+}
+function goHome(){goToPage(1)}
+function closeAll(){goHome();closeGift()}
+
+/* Gift */
+function openGift(){
+  modal.classList.add("active");
+}
+function closeGift(){
+  modal.classList.remove("active");
+}
+function modalOutside(e){
+  if(e.target === modal) closeGift();
+}
+function giftOpenAnimation(){
+  giftText.innerHTML = "✨ Hadiahnya terbuka! Sekarang lanjut ke kejutan berikutnya.";
+  fireConfetti();
+}
+
+/* Cake interaction */
+let cakeLit = false;
+function cakeClick(){
+  cakeLit = !cakeLit;
+  document.querySelectorAll(".flame").forEach(f => f.style.display = cakeLit ? "block" : "none");
+  document.getElementById("cakeMessage").textContent =
+    cakeLit ? "Yay! Lilinnya menyala untuk kamu ✨♡" : "Klik kuenya untuk menyalakan lilin ✨";
+  if(cakeLit) fireConfetti();
+}
+document.querySelector(".cake").addEventListener("keydown",e=>{
+  if(e.key==="Enter" || e.key===" ") cakeClick();
+});
+
+/* Confetti */
+function fireConfetti(){
+  const layer = document.getElementById("confetti");
+  layer.innerHTML = "";
+  for(let i=0;i<90;i++){
+    const el = document.createElement("span");
+    el.className = "confetti-piece";
+    el.style.left = Math.random()*100 + "%";
+    el.style.setProperty("--x",(Math.random()*240-120)+"px");
+    el.style.setProperty("--dur",(2.2+Math.random()*2.8)+"s");
+    el.style.setProperty("--rot",(Math.random()*360)+"deg");
+    el.style.background = ["#e9aa45","#f4dfbd","#8ea7c7","#ffffff","#c96c62"][Math.floor(Math.random()*5)];
+    el.style.opacity = .75 + Math.random()*.25;
+    el.style.borderRadius = Math.random()>.6 ? "50%" : "2px";
+    layer.appendChild(el);
+  }
+  setTimeout(()=>layer.innerHTML="",5500);
+}
+
+/* Musik Web Audio API[cite: 6] */
+let audioCtx = null;
+let musicTimer = null;
+let musicPlaying = false;
+const melody = [
+  [261.63,.35],[261.63,.35],[293.66,.7],[261.63,.7],[349.23,.7],[329.63,1.0],
+  [261.63,.35],[261.63,.35],[293.66,.7],[261.63,.7],[392.00,.7],[349.23,1.0],
+  [261.63,.35],[261.63,.35],[523.25,.7],[440.00,.7],[349.23,.7],[329.63,.7],[293.66,1.0],
+  [466.16,.35],[466.16,.35],[440.00,.7],[349.23,.7],[392.00,.7],[349.23,1.0]
+];
+
+function playNote(freq,duration,startTime){
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = "sine";
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0.0001,startTime);
+  gain.gain.exponentialRampToValueAtTime(0.09,startTime+0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001,startTime+duration-.03);
+  osc.connect(gain).connect(audioCtx.destination);
+  osc.start(startTime);
+  osc.stop(startTime+duration);
+}
+function startMusic(){
+  if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if(audioCtx.state === "suspended") audioCtx.resume();
+  musicPlaying = true;
+  musicBtn.classList.add("playing");
+  musicIcon.textContent = "❚❚";
+
+  let t = audioCtx.currentTime + .05;
+  melody.forEach(([freq,dur])=>{
+    playNote(freq,dur*.85,t);
+    t += dur;
+  });
+
+  musicTimer = setTimeout(()=>{
+    if(musicPlaying) startMusic();
+  }, melody.reduce((a,x)=>a+x[1],0)*1000 + 250);
+}
+function stopMusic(){
+  musicPlaying = false;
+  musicBtn.classList.remove("playing");
+  musicIcon.textContent = "♫";
+  clearTimeout(musicTimer);
+}
+function toggleMusic(){
+  if(musicPlaying) stopMusic();
+  else startMusic();
+}
+
+/* Keyboard navigation */
+document.addEventListener("keydown",e=>{
+  if(e.key === "ArrowRight") changePage(1);
+  if(e.key === "ArrowLeft") changePage(-1);
+  if(e.key === "Escape") closeGift();
+});
+
+/* Swipe navigation */
+let touchStartX = null;
+document.addEventListener("touchstart",e=>{
+  touchStartX = e.changedTouches[0].clientX;
+},{passive:true});
+document.addEventListener("touchend",e=>{
+  if(touchStartX === null) return;
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if(Math.abs(dx) > 55) changePage(dx < 0 ? 1 : -1);
+  touchStartX = null;
+},{passive:true});
+
+renderPage();
+</script>
+</body>
+</html>
